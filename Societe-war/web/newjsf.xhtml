@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <ui:composition template="/template.xhtml">
+        <style>
+            .center{
+                text-align:center;
+                border:solid 1px;
+            }
+        </style>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFonctionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form >
+        <rich:dataTable value="#{fonctionController.items}" var="item"    rowClasses="row1, row2" id="taskList"  rows="4"
+                        columnClasses="50,100,100,100" onrowmousemove="this.style.backgroundColor='#B5F3FB'"
+                        onrowmouseout="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'"
+                      >
+           <f:facet name="header">
+                            <h:outputText value="Fonctions"/>
+                        </f:facet>
+                        <rich:column sortBy="#{item.libelle}"  filterEvent="onkeyup" filterValue=""> 
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFonctionTitle_libelle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.libelle}"/>
+                        </rich:column> 
+                        <rich:column sortBy="#{item.id}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFonctionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/> 
+                        </rich:column>
+            <f:facet name="footer">
+                <rich:dataScroller valign="left" for="taskList" maxPages="20"></rich:dataScroller>
+                
+            </f:facet>
+        </rich:dataTable>
+    </h:form>
+ </ui:define>
+    </ui:composition>
+
+</html>

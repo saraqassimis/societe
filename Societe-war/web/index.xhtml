@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+           index
+        </ui:define>
+        <ui:define name="body">
+   
+      
+         <h:form>
+             
+        <b:navbar brand="Menu" collapsible="true">
+ 
+    <b:positionFacet>
+        <h:link outcome="/index.xhtml" value="Index"/>
+        <b:menuFacet label="Fonction">
+            <h:link outcome="fonction/List.xhtml" value="Fonction view"/>
+           </b:menuFacet>
+           <b:menuFacet label="Societe">
+            <h:link outcome="societe/List.xhtml" value="Societe view"/>
+           </b:menuFacet>
+        
+    </b:positionFacet>
+            </b:navbar>
+      </h:form>
+ 
+       
+    </ui:define>
+    </ui:composition>
+    
+
+</html>
+

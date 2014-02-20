@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSocieteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSocieteLabel_nom}"/>
+                    <h:outputText value="#{societeController.selected.nom}" title="#{bundle.ViewSocieteTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewSocieteLabel_fonction}"/>
+                    <h:outputText value="#{societeController.selected.fonction}" title="#{bundle.ViewSocieteTitle_fonction}"/>
+                    <h:outputText value="#{bundle.ViewSocieteLabel_id}"/>
+                    <h:outputText value="#{societeController.selected.id}" title="#{bundle.ViewSocieteTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{societeController.destroyAndView}" value="#{bundle.ViewSocieteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSocieteEditLink}"/>
+                <br />
+                <h:commandLink action="#{societeController.prepareCreate}" value="#{bundle.ViewSocieteCreateLink}" />
+                <br />
+                <h:commandLink action="#{societeController.prepareList}" value="#{bundle.ViewSocieteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSocieteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

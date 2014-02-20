@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"       
+       xmlns:rich="http://richfaces.org/rich"
+       xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+    <ui:composition template="/template.xhtml">
+        <style>
+            .center{
+                text-align:center;
+                border:solid 1px;
+            }
+        </style>
+        <ui:define name="title">
+
+
+        </ui:define>
+        <ui:define name="body">
+            <b:navbar brand="Gestion Des Ressources Humaines" inverse="true">
+                <f:facet name="collapsedMenu">
+                    <b:icon value="cog" color="white"/>
+                    <h:outputText value="Gestion Des Ressources Humaines" />
+                </f:facet>
+
+
+                <b:gridRow styleClass="show-grid" fluid="#{sessionBean.fluid}">
+
+
+
+
+
+                    <b:gridColumn span="1" offset="8" >
+                        <b:buttonDropdown title="Profil" severity="primary" >
+                            <h:link  value="Modifier Profil"/>
+
+                            <b:separatorFacet />
+                            <h:link  value="Deconnexion"/>
+                        </b:buttonDropdown>
+                    </b:gridColumn>
+
+                </b:gridRow>
+
+
+
+
+
+
+            </b:navbar>
+            <h:form prependId="false">
+                <b:gridRow styleClass="show-grid" fluid="#{sessionBean.fluid}">
+                    <b:gridColumn  span="4">               
+                        <div id="espace">
+                            <div id="menuespace">
+                                <div id="espace-top">
+
+                                    <b:navbar>
+                                        <f:facet name="brand" >
+                                            <h:link outcome="/index.xhtml" value="Accueil" styleClass="brand"/>
+                                        </f:facet>
+                                    </b:navbar>
+                                </div>
+
+                                <div id="espace-bottom">
+                                    <b:navbar>
+
+                                        <f:facet name="brand" >
+                                            <h:link  value="Accueil RH" styleClass="brand"/>
+                                        </f:facet>
+
+                                    </b:navbar>
+                                    <b:navbar>
+                                        <f:facet name="brand" >
+                                            <h:link  value="Administration" styleClass="brand"/>
+                                        </f:facet>
+                                    </b:navbar>
+                                    <b:navbar>
+                                        <f:facet name="brand" >
+                                            <h:link  value="Carrières" styleClass="brand"/>
+                                        </f:facet>
+                                    </b:navbar>
+                                    <b:navbar>
+                                        <f:facet name="brand" >
+                                            <h:link  value="Formations" styleClass="brand"/>
+                                        </f:facet>
+                                    </b:navbar>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </b:gridColumn>
+
+                    <b:gridColumn span="8">
+                        <div id="table-top">
+                            <div class="table-top-1" >
+
+                                <h4><b>Formation</b></h4> 
+                            </div>                    	
+
+                        </div>  
+
+                        <div id="table-bottom">
+                            <div >
+                                <br />
+                                <h:commandLink action="#{fonctionController.prepareCreate}" value="#{bundle.ListFonctionCreateLink}"/>
+                                <br />
+                                <rich:dataTable  id="fonction" value="#{fonctionController.items}" var="item"  rowClasses="row1, row2"   rows="4"
+                                                 columnClasses="50,100,100,100" onrowmousemove="this.style.backgroundColor='#B5F3FB'"
+                                                 onrowmouseout="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'"
+                                                 styleClass="tablestyle">
+
+                                    <rich:column  width="5%" sortBy="#{item.libelle}"> 
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListFonctionTitle_libelle}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.libelle}"/>
+                                    </rich:column> 
+                                    <rich:column sortBy="#{item.libelle}"> 
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListFonctionTitle_libelle}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.libelle}"/>
+                                    </rich:column> 
+                                    <rich:column sortBy="#{item.libelle}"> 
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListFonctionTitle_libelle}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.libelle}"/>
+                                    </rich:column> 
+                                    <rich:column sortBy="#{item.libelle}"> 
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListFonctionTitle_libelle}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.libelle}"/>
+                                    </rich:column> 
+                                    <rich:column sortBy="#{item.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListFonctionTitle_id}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.id}"/> 
+                                    </rich:column>
+                                    <rich:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="&nbsp;"/>
+                                        </f:facet>
+                                        
+                                        <h:commandLink action="#{fonctionController.prepareView}" value="#{bundle.ListFonctionViewLink}"/>
+                                        <h:outputText value=" "/>
+                                        
+                                       <i class="icon-pencil"></i>
+                                       <h:commandButton class="btn btn-large" action="#{fonctionController.prepareEdit}" value="#{bundle.ListFonctionEditLink}">
+                                        
+                                        </h:commandButton>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{fonctionController.destroy}" value="#{bundle.ListFonctionDestroyLink}"/>
+                                    
+                                    </rich:column>
+                                    <f:facet name="footer">
+                                        <rich:dataScroller for="fonction" maxPages="20"></rich:dataScroller>
+
+
+                                    </f:facet>
+                                </rich:dataTable>
+                            </div>
+
+
+                        </div>
+
+                    </b:gridColumn>
+                </b:gridRow>
+
+
+
+
+
+
+
+
+
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
